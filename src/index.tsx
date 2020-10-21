@@ -8,6 +8,11 @@ import { Theme } from './styled';
 
 const theme: Theme = {
   colors: {
+    background: "#F9F9F9",
+    post: {
+      background: "#FFFFFF",
+      textBackground: "#F1F1F1",
+    },
     subtitle: "rgba(88,88,88,0.87)",
     text: "rgba(0,0,0,0.6)",
     title: "#2C2C2C",

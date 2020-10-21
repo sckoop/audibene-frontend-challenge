@@ -2,6 +2,11 @@ import styled, { CreateStyled } from '@emotion/styled/macro';
 
 export type Theme = {
   colors: {
+    background: string;
+    post: {
+      background: string;
+      textBackground: string;
+    };
     subtitle: string;
     text: string;
     title: string;

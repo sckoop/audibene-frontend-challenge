@@ -7,9 +7,22 @@ import styled from './styled';
 import { RedditPost } from './types';
 
 const Page = styled.div`
+  background: ${({ theme }) => theme.colors.background};
+  border-radius: ${({ theme }) => theme.spacing(0.5)};
   color: ${({ theme }) => theme.colors.text};
   font-size: ${({ theme }) => theme.fontSize.medium};
-  margin: ${({ theme }) => theme.spacing(4)} ${({ theme }) => theme.spacing(9)};
+  padding: ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(9)};
+  margin: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(6)};
+  @media (min-width: 1280px) {
+    margin: ${({ theme }) => theme.spacing(16)}
+      ${({ theme }) => theme.spacing(26)};
+  }
+`;
+
+const Container = styled.div`
+  background-color: ${({ theme }) => theme.colors.post.background};
+  border-radius: ${({ theme }) => theme.spacing(0.5)};
+  padding: ${({ theme }) => theme.spacing(3)};
 `;
 
 const App = () => {
@@ -36,10 +49,10 @@ const App = () => {
         subreddit={redditPost.subreddit_name_prefixed}
         ups={redditPost.ups}
       />
-      <div>
+      <Container>
         <Post />
         <CommentList />
-      </div>
+      </Container>
     </Page>
   );
 };
