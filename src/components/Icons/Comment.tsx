@@ -5,15 +5,15 @@ export const IconsComment = () => (
     <g
       id="Dev_Challenge_V2"
       stroke="none"
-      stroke-width="1"
+      strokeWidth="1"
       fill="none"
-      fill-rule="evenodd"
+      fillRule="evenodd"
     >
       <g
         id="Desktop-HD"
         transform="translate(-340.000000, -506.000000)"
         fill="#2C2C2C"
-        fill-rule="nonzero"
+        fillRule="nonzero"
       >
         <g
           id="Sheets-/-Bottom-Sheet"

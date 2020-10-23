@@ -21,7 +21,7 @@ const Subreddit = styled.h3`
 `;
 
 const Title = styled.h1`
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   margin: 0;
 `;

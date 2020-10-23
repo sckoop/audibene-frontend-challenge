@@ -8,12 +8,12 @@ const Box = styled.div`
   ${({ theme }) => ({
     background: theme.colors.post.textBackground,
     borderRadius: theme.spacing(0.5),
-    padding: theme.spacing(2) + " " + theme.spacing(4),
+    padding: theme.spacing(3) + " " + theme.spacing(4),
   })}
 `;
 
 const Text = styled.div`
-  *:first-child {
+  *:first-of-type {
     margin-top: 0;
   }
 `;

@@ -20,7 +20,7 @@ const Container = styled.div`
   ${({ theme }) => ({
     backgroundColor: theme.colors.post.background,
     borderRadius: theme.spacing(0.5),
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
   })};
 `;
 

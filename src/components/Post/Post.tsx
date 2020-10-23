@@ -19,7 +19,7 @@ const Post = ({ text, amountOfComments }: PostProps) => {
     .replace("<!-- SC_ON -->", "")
     .replace("<!-- SC_OFF -->", "");
 
-  const commentText = amountOfComments > 1 ? "Comments" : "Comment";
+  const commentText = amountOfComments === 1 ? "Comment" : "Comments";
 
   return (
     <Styled.Box>
