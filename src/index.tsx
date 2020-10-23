@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { StateProvider } from "./store/store";
 import { Theme } from "./styled";
 
 const theme: Theme = {
@@ -30,7 +31,9 @@ const theme: Theme = {
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <StateProvider>
+        <App />
+      </StateProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

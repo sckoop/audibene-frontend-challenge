@@ -31,3 +31,27 @@ export interface RedditComment {
   ups: number;
   parent_id?: string;
 }
+
+export enum Status {
+  Initial = "INITIAL",
+  Loading = "LOADING",
+  Success = "SUCCESS",
+  Failure = "FAILURE",
+}
+
+export enum ActionTypes {
+  FetchRedditPostLoad = "FETCH_REDDIT_POST_LOAD",
+  FetchRedditPostSuccess = "FETCH_REDDIT_POST_SUCCESS",
+  FetchRedditPostFailure = "FETCH_REDDIT_POST_FAILURE",
+}
+
+export interface ApplicationState {
+  status: Status;
+  redditPost?: RedditPost;
+  error?: any;
+}
+
+export interface StateContextProps {
+  state: ApplicationState;
+  fetchRedditPost: (url: string) => void;
+}
