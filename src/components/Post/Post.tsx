@@ -4,7 +4,7 @@ import { IconsComment } from "../Icons/Comment";
 import { Styled } from "./Post.styled";
 
 export interface PostProps {
-  amountOfComments: number;
+  totalComments: number;
   text: string;
 }
 
@@ -14,12 +14,12 @@ const htmlDecode = (text: string) => {
   return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue || "";
 };
 
-const Post = ({ text, amountOfComments }: PostProps) => {
+const Post = ({ text, totalComments }: PostProps) => {
   const displayText = htmlDecode(text)
     .replace("<!-- SC_ON -->", "")
     .replace("<!-- SC_OFF -->", "");
 
-  const commentText = amountOfComments === 1 ? "Comment" : "Comments";
+  const commentText = totalComments === 1 ? "Comment" : "Comments";
 
   return (
     <Styled.Box>
@@ -27,7 +27,7 @@ const Post = ({ text, amountOfComments }: PostProps) => {
       <Styled.Comments>
         <IconsComment />
         <Styled.Amount>
-          {amountOfComments} {commentText}
+          {totalComments} {commentText}
         </Styled.Amount>
       </Styled.Comments>
     </Styled.Box>

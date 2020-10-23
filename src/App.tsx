@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from 'react';
 
-import { Styled } from "./App.styles";
-import CommentList from "./components/CommentList/CommentList";
-import Post from "./components/Post/Post";
-import Title from "./components/Title/Title";
-import { Status, store } from "./store";
+import { Styled } from './App.styles';
+import CommentList from './components/Comment/List';
+import Post from './components/Post/Post';
+import Title from './components/Title/Title';
+import { Status, store } from './store';
 
 const App = () => {
   const { state, fetchRedditPost } = useContext(store);
@@ -27,7 +27,6 @@ const App = () => {
   }
 
   const redditPost = state.redditPost!;
-  const amountOfComments = redditPost.comments ? redditPost.comments.length : 0;
 
   return (
     <Styled.Page>
@@ -39,9 +38,9 @@ const App = () => {
       <Styled.Container>
         <Post
           text={redditPost.selftext_html}
-          amountOfComments={amountOfComments}
+          totalComments={redditPost.totalComments}
         />
-        <CommentList />
+        <CommentList comments={redditPost.comments} />
       </Styled.Container>
     </Styled.Page>
   );

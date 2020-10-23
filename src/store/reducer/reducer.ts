@@ -1,10 +1,4 @@
-import {
-  ApiRedditPost,
-  ApplicationState,
-  RedditComment,
-  RedditPost,
-  Status,
-} from "../types";
+import { ApiRedditPost, ApplicationState, RedditPost, Status } from "../types";
 import { createRedditComments } from "./util";
 
 export enum ActionTypes {
@@ -32,9 +26,14 @@ export const reducer = (
         error: undefined,
       };
     case ActionTypes.FetchRedditPostSuccess: {
-      const { redditPost: apiRedditPost } = action;
+      const apiRedditPost = action.redditPost!;
 
-      const redditPost = { ...apiRedditPost }! as RedditPost;
+      const redditPost = {
+        ...apiRedditPost,
+        totalComments: apiRedditPost.comments
+          ? apiRedditPost.comments.length
+          : 0,
+      }! as RedditPost;
 
       redditPost.comments = createRedditComments(redditPost.comments);
 

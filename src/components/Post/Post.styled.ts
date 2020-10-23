@@ -1,4 +1,4 @@
-import styled from '../../styles/styled';
+import styled from "../../styles/styled";
 
 const Amount = styled.div`
   margin-left: ${({ theme }) => theme.spacing(1)};
@@ -16,11 +16,15 @@ const Text = styled.div`
   *:first-of-type {
     margin-top: 0;
   }
+  *:last-of-type {
+    margin-bottom: 0;
+  }
 `;
 
 const Comments = styled.div`
   display: flex;
   align-items: center;
+  margin-top: ${({ theme }) => theme.spacing(2)};
 `;
 
 export const Styled = {

@@ -34,6 +34,7 @@ export interface ApiRedditComment {
 
 export interface RedditPost extends ApiRedditPost {
   comments: RedditComment[];
+  totalComments: number;
 }
 
 export interface RedditComment extends ApiRedditComment {

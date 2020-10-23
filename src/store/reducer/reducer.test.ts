@@ -34,7 +34,11 @@ describe("store/reducer", () => {
     });
 
     expect(status).toBe(Status.Success);
-    expect(redditPost).toEqual({ ...apiRedditPost, comments: [] });
+    expect(redditPost).toEqual({
+      ...apiRedditPost,
+      totalComments: 0,
+      comments: [],
+    });
   });
 
   it("Structure comments", () => {
@@ -90,6 +94,8 @@ describe("store/reducer", () => {
       type: ActionTypes.FetchRedditPostSuccess,
       redditPost: apiRedditPost,
     });
+
+    expect(redditPost!.totalComments).toBe(apiComments.length);
 
     const comments = redditPost!.comments!;
 
