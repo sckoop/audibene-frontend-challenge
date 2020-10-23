@@ -1,4 +1,4 @@
-import styled from "../../styled";
+import styled from '../../styles/styled';
 
 const Amount = styled.div`
   margin-left: ${({ theme }) => theme.spacing(1)};

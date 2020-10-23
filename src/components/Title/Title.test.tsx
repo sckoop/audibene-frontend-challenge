@@ -1,13 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 
-import Title from './Title';
+import ThemeProvider from "../../styles/ThemeProvider";
+import Title from "./Title";
 
-describe("Title", () => {
+describe("components/Title", () => {
   test("Render a title with ups", () => {
     const { getByText } = render(
-      <Title text="TITLE" subreddit="SUBREDDIT" ups={42402} />
+      <ThemeProvider>
+        <Title text="TITLE" subreddit="SUBREDDIT" ups={42402} />
+      </ThemeProvider>
     );
 
     expect(getByText("TITLE")).toBeInTheDocument();

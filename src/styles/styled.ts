@@ -1,4 +1,4 @@
-import styled, { CreateStyled } from '@emotion/styled/macro';
+import styled, { CreateStyled } from "@emotion/styled/macro";
 
 export type Theme = {
   colors: {

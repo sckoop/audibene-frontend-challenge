@@ -1,4 +1,4 @@
-export interface RedditPost {
+export interface ApiRedditPost {
   subreddit: string;
   selftext: string;
   title: string;
@@ -15,9 +15,9 @@ export interface RedditPost {
   is_video: boolean;
   author: string;
   ups: number;
-  comments?: RedditComment[];
+  comments?: ApiRedditComment[];
 }
-export interface RedditComment {
+export interface ApiRedditComment {
   created_utc: number;
   subreddit_name_prefixed: string;
   subreddit: string;
@@ -32,17 +32,19 @@ export interface RedditComment {
   parent_id?: string;
 }
 
+export interface RedditPost extends ApiRedditPost {
+  comments: RedditComment[];
+}
+
+export interface RedditComment extends ApiRedditComment {
+  comments: RedditComment[];
+}
+
 export enum Status {
   Initial = "INITIAL",
   Loading = "LOADING",
   Success = "SUCCESS",
   Failure = "FAILURE",
-}
-
-export enum ActionTypes {
-  FetchRedditPostLoad = "FETCH_REDDIT_POST_LOAD",
-  FetchRedditPostSuccess = "FETCH_REDDIT_POST_SUCCESS",
-  FetchRedditPostFailure = "FETCH_REDDIT_POST_FAILURE",
 }
 
 export interface ApplicationState {

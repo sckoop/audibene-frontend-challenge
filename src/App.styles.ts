@@ -1,4 +1,4 @@
-import styled from "./styled";
+import styled from './styles/styled';
 
 const Page = styled.div`
   ${({ theme }) => ({

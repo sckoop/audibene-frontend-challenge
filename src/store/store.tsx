@@ -1,14 +1,9 @@
 import React, { createContext, useCallback, useReducer } from "react";
 
-import { reducer } from "./reducer";
-import {
-  ActionTypes,
-  ApplicationState,
-  StateContextProps,
-  Status,
-} from "./types";
+import { ActionTypes, reducer } from "./reducer/reducer";
+import { ApplicationState, StateContextProps, Status } from "./types";
 
-const initialState: ApplicationState = {
+export const initialState: ApplicationState = {
   status: Status.Initial,
 };
 
@@ -24,11 +19,15 @@ const StateProvider = ({ children }: any) => {
   const fetchRedditPost = useCallback(
     async (url: string) => {
       dispatch({ type: ActionTypes.FetchRedditPostLoad });
+
       try {
         const response = await fetch(url);
         const data = await response.json();
 
-        dispatch({ type: ActionTypes.FetchRedditPostSuccess, data });
+        dispatch({
+          type: ActionTypes.FetchRedditPostSuccess,
+          redditPost: data,
+        });
       } catch (error) {
         dispatch({ type: ActionTypes.FetchRedditPostFailure, error });
       }
