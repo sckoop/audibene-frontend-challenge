@@ -5,13 +5,15 @@ import { RedditComment } from "../../store";
 import { formatUps } from "../../utils";
 import HTMLText from "../HTMLText/HTMLText";
 import { Styled } from "./Comment.styled";
+import CommentList from "./List";
 
-interface CommentProps extends Pick<RedditComment, "author" | "ups"> {
+interface CommentProps
+  extends Pick<RedditComment, "author" | "ups" | "comments"> {
   text: string;
   createdAt: number;
 }
 
-const Comment = ({ author, text, createdAt, ups }: CommentProps) => {
+const Comment = ({ author, text, createdAt, ups, comments }: CommentProps) => {
   const formattedCreatedAt = formatDistance(
     new Date(createdAt * 1000),
     new Date(),
@@ -19,7 +21,7 @@ const Comment = ({ author, text, createdAt, ups }: CommentProps) => {
   );
 
   return (
-    <Styled.Wrapper>
+    <>
       <Styled.Header>
         <Styled.Author
           href={`https://www.reddit.com/user/${author}`}
@@ -31,8 +33,11 @@ const Comment = ({ author, text, createdAt, ups }: CommentProps) => {
           {formatUps(ups)} - {formattedCreatedAt}
         </span>
       </Styled.Header>
-      <HTMLText text={text} />
-    </Styled.Wrapper>
+      <Styled.Text>
+        <HTMLText text={text} />
+      </Styled.Text>
+      <CommentList comments={comments} hasBorder />
+    </>
   );
 };
 

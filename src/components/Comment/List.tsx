@@ -6,22 +6,30 @@ import { Styled } from "./List.styled";
 
 interface CommentListProps {
   comments: RedditComment[];
+  hasBorder?: boolean;
 }
 
-const CommentList = ({ comments }: CommentListProps) => {
+const CommentList = ({ comments, hasBorder }: CommentListProps) => {
   if (comments.length === 0) {
     return null;
   }
 
   return (
-    <Styled.Wrapper>
+    <Styled.Wrapper hasBorder={hasBorder}>
       {comments.map(
-        ({ author, created_utc, body_html, ups }: RedditComment) => (
+        ({
+          author,
+          created_utc,
+          body_html,
+          ups,
+          comments: subComments,
+        }: RedditComment) => (
           <Comment
             author={author}
             createdAt={created_utc}
             text={body_html}
             ups={ups}
+            comments={subComments}
           />
         )
       )}

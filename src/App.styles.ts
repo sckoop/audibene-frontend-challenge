@@ -1,4 +1,4 @@
-import styled from './styles/styled';
+import styled from "./styles/styled";
 
 const Page = styled.div`
   ${({ theme }) => ({
@@ -20,6 +20,8 @@ const Container = styled.div`
   ${({ theme }) => ({
     backgroundColor: theme.colors.post.background,
     borderRadius: theme.spacing(0.5),
+    display: "grid",
+    gridRowGap: theme.spacing(2),
     padding: theme.spacing(3),
   })};
 `;

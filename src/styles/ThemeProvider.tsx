@@ -11,6 +11,7 @@ const theme: Theme = {
       textBackground: "#F1F1F1",
     },
     comment: {
+      border: "#EDEDED",
       header: "rgba(0, 0, 0, 0.87)",
       username: "#36A3F0",
     },

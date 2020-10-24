@@ -8,6 +8,7 @@ export type Theme = {
       textBackground: string;
     };
     comment: {
+      border: string;
       header: string;
       username: string;
     };

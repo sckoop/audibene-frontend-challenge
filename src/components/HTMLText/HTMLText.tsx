@@ -6,7 +6,7 @@ interface HTMLTextProps {
   text: string;
 }
 
-const Text = styled.div`
+const Text = styled.span`
   *:first-of-type {
     margin-top: 0;
   }
