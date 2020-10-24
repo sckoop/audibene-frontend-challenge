@@ -1,6 +1,6 @@
 import React from "react";
 
-export const IconsComment = () => (
+const IconsComment = () => (
   <svg width="13px" height="12px" viewBox="0 0 13 12" version="1.1">
     <g
       id="Dev_Challenge_V2"
@@ -39,3 +39,5 @@ export const IconsComment = () => (
     </g>
   </svg>
 );
+
+export default IconsComment;

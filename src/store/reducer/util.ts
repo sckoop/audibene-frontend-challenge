@@ -32,20 +32,36 @@ export const createRedditComments = (
   apiComments.forEach((comment) => {
     const parentId = comment.parent_id || "";
     if (comment.depth === 0) {
-      comments.push({
-        ...comment,
-        comments: tmpCommentMap.get(comment.id) || [],
-      });
+      comments.push(mapComment(comment, tmpCommentMap.get(comment.id)));
     }
 
     const existingComments = tmpCommentMap.get(parentId) || [];
-    existingComments.push({
-      ...comment,
-      comments: tmpCommentMap.get(comment.id) || [],
-    });
+    existingComments.push(mapComment(comment, tmpCommentMap.get(comment.id)));
 
     tmpCommentMap.set(parentId, existingComments);
   });
 
   return comments;
 };
+
+const mapComment = (
+  apiRedditComment: ApiRedditComment,
+  comments?: RedditComment[]
+): RedditComment => {
+  const redditComment = {
+    ...apiRedditComment,
+    isDeleted: false,
+    comments: comments || [],
+  };
+
+  if (isDeleted(redditComment)) {
+    redditComment.body = "[deleted]";
+    redditComment.body_html = "[deleted]";
+    redditComment.author = "[deleted]";
+    redditComment.isDeleted = true;
+  }
+
+  return redditComment;
+};
+
+export const isDeleted = ({ body }: ApiRedditComment) => body === "[deleted]";

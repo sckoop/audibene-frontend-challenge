@@ -9,7 +9,10 @@ const Wrapper = styled.div<WrapperProps>`
     borderLeft: hasBorder ? "1px solid " + theme.colors.comment.border : "none",
     display: "grid",
     gridRowGap: theme.spacing(2),
-    padding: theme.spacing() + " " + theme.spacing(4),
+    paddingBottom: theme.spacing(),
+    paddingLeft: theme.spacing(4),
+    paddingRight: "0",
+    paddingTop: theme.spacing(),
   })}
 `;
 

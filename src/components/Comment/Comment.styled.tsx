@@ -1,11 +1,12 @@
 import styled from "../../styles/styled";
 
 const Header = styled.div`
+  display: flex;
   ${({ theme }) => ({
     fontSize: theme.fontSize.small,
     color: theme.colors.comment.header,
-    paddingBottom: theme.spacing(),
-  })}
+    marginBottom: theme.spacing(),
+  })};
 `;
 const Author = styled.a`
   ${({ theme }) => ({
@@ -15,12 +16,14 @@ const Author = styled.a`
   text-decoration: none;
 `;
 
-const Text = styled.div`
-  padding-bottom: ${({ theme }) => theme.spacing()};
+const Icon = styled.span`
+  align-self: flex-end;
+  margin-left: auto;
+  cursor: pointer;
 `;
 
 export const Styled = {
+  Icon,
   Header,
   Author,
-  Text,
 };

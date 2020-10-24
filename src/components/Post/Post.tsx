@@ -1,7 +1,7 @@
 import React from "react";
 
 import HTMLText from "../HTMLText/HTMLText";
-import { IconsComment } from "../Icons/Comment";
+import IconsComment from "../Icons/Comment";
 import { Styled } from "./Post.styled";
 
 export interface PostProps {

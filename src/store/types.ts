@@ -39,6 +39,7 @@ export interface RedditPost extends ApiRedditPost {
 
 export interface RedditComment extends ApiRedditComment {
   comments: RedditComment[];
+  isDeleted: boolean;
 }
 
 export enum Status {

@@ -152,4 +152,26 @@ describe("store/reducer", () => {
     expect(comments[0].id).toBe(root.id);
     expect(comments[1].id).toBe(anotherRoot.id);
   });
+
+  it("Initial deleted comment is marked as deleted", () => {
+    const root = {
+      created_utc: 1,
+      depth: 0,
+      id: "1",
+      body: "[deleted]",
+    };
+
+    const apiComments = [root];
+
+    const apiRedditPost = { comments: apiComments } as ApiRedditPost;
+
+    const { redditPost } = reducer(initialState, {
+      type: ActionTypes.FetchRedditPostSuccess,
+      redditPost: apiRedditPost,
+    });
+
+    const comments = redditPost!.comments!;
+
+    expect(comments[0].isDeleted).toBeTruthy();
+  });
 });
