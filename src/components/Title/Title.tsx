@@ -1,6 +1,6 @@
-import numeral from "numeral";
 import React from "react";
 
+import { formatUps } from "../../utils";
 import { Styled } from "./Title.styles";
 
 export interface TitleProps {
@@ -13,7 +13,7 @@ const Title = ({ text, subreddit, ups }: TitleProps) => (
   <Styled.Wrapper>
     <Styled.Subreddit>{subreddit}</Styled.Subreddit>
     <Styled.Title>
-      <Styled.Ups>{numeral(ups).format("0.0a")}</Styled.Ups>
+      <Styled.Ups>{formatUps(ups)}</Styled.Ups>
       <Styled.Text>{text}</Styled.Text>
     </Styled.Title>
   </Styled.Wrapper>

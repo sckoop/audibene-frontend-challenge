@@ -1,7 +1,7 @@
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
-import React from 'react';
+import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
+import React from "react";
 
-import { Theme } from './styled';
+import { Theme } from "./styled";
 
 const theme: Theme = {
   colors: {
@@ -10,10 +10,13 @@ const theme: Theme = {
       background: "#FFFFFF",
       textBackground: "#F1F1F1",
     },
+    comment: {
+      header: "rgba(0, 0, 0, 0.87)",
+      username: "#36A3F0",
+    },
     subtitle: "rgba(88,88,88,0.87)",
     text: "rgba(0,0,0,0.6)",
     title: "#2C2C2C",
-    username: "#36A3F0",
   },
   fontSize: {
     small: "12px",

@@ -4,9 +4,6 @@ const Wrapper = styled.div`
   ${({ theme }) => ({
     margin: theme.spacing(3) + " " + theme.spacing(4),
   })}
-  *:not(:last-child) {
-    margin-bottom: ${({ theme }) => theme.spacing()};
-  } ;
 `;
 
 export const Styled = {

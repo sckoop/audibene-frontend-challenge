@@ -7,10 +7,13 @@ export type Theme = {
       background: string;
       textBackground: string;
     };
+    comment: {
+      header: string;
+      username: string;
+    };
     subtitle: string;
     text: string;
     title: string;
-    username: string;
   };
   fontSize: {
     small: string;
