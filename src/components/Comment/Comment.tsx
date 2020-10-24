@@ -1,7 +1,7 @@
 import formatDistance from "date-fns/formatDistance";
-import React from "react";
+import React, { useContext } from "react";
 
-import { RedditComment } from "../../store";
+import { RedditComment, store } from "../../store";
 import { formatUps } from "../../utils";
 import HTMLText from "../HTMLText/HTMLText";
 import IconsDelete from "../Icons/Delete";
@@ -32,8 +32,10 @@ const Comment = ({
     { addSuffix: true }
   );
 
+  const { deleteComment } = useContext(store);
+
   const deleteIcon = isDeleted ? null : (
-    <Styled.Icon>
+    <Styled.Icon onClick={() => deleteComment(id)}>
       <IconsDelete />
     </Styled.Icon>
   );
@@ -48,7 +50,7 @@ const Comment = ({
           {author}
         </Styled.Author>
         <span>
-          {formatUps(ups)} - {formattedCreatedAt}
+          {`${formatUps(ups)} points`} - {formattedCreatedAt}
         </span>
         {deleteIcon}
       </Styled.Header>

@@ -64,4 +64,27 @@ const mapComment = (
   return redditComment;
 };
 
+export const markCommentAsDeleted = (
+  comment: RedditComment,
+  idToDelete: string
+): RedditComment => {
+  if (comment.id === idToDelete) {
+    return {
+      ...comment,
+      author: "[deleted]",
+      body: "[deleted]",
+      body_html: "[deleted]",
+      isDeleted: true,
+    };
+  }
+
+  if (comment.comments.length > 0) {
+    comment.comments = comment.comments.map((childComment) =>
+      markCommentAsDeleted(childComment, idToDelete)
+    );
+  }
+
+  return comment;
+};
+
 export const isDeleted = ({ body }: ApiRedditComment) => body === "[deleted]";

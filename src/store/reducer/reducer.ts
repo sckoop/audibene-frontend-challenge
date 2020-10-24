@@ -1,16 +1,18 @@
 import { ApiRedditPost, ApplicationState, RedditPost, Status } from "../types";
-import { createRedditComments } from "./util";
+import { createRedditComments, markCommentAsDeleted } from "./util";
 
 export enum ActionTypes {
   FetchRedditPostLoad = "FETCH_REDDIT_POST_LOAD",
   FetchRedditPostSuccess = "FETCH_REDDIT_POST_SUCCESS",
   FetchRedditPostFailure = "FETCH_REDDIT_POST_FAILURE",
+  DeleteRedditComment = "DELETE_REDDIT_COMMENT",
 }
 
 export interface Action {
   type: ActionTypes;
   redditPost?: ApiRedditPost;
   error?: Error;
+  id?: string;
 }
 
 export const reducer = (
@@ -51,6 +53,22 @@ export const reducer = (
         status: Status.Failure,
         redditPost: undefined,
         error: action.error,
+      };
+    case ActionTypes.DeleteRedditComment:
+      const { redditPost, ...oldState } = state;
+      const idToDelete = action.id!;
+      const { comments, ...oldPostData } = redditPost!;
+
+      const updatedRedditPost = {
+        ...oldPostData,
+        comments: comments.map((comment) =>
+          markCommentAsDeleted(comment, idToDelete)
+        ),
+      };
+
+      return {
+        ...oldState,
+        redditPost: updatedRedditPost,
       };
     default:
       throw new Error();

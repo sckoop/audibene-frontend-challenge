@@ -10,7 +10,9 @@ export const initialState: ApplicationState = {
 const store = createContext<StateContextProps>({
   state: initialState,
   fetchRedditPost: () => {},
+  deleteComment: () => {},
 });
+
 const { Provider } = store;
 
 const StateProvider = ({ children }: any) => {
@@ -35,7 +37,15 @@ const StateProvider = ({ children }: any) => {
     [dispatch]
   );
 
-  return <Provider value={{ state, fetchRedditPost }}>{children}</Provider>;
+  const deleteComment = (id: string) => {
+    dispatch({ type: ActionTypes.DeleteRedditComment, id });
+  };
+
+  return (
+    <Provider value={{ state, fetchRedditPost, deleteComment }}>
+      {children}
+    </Provider>
+  );
 };
 
 export { store, StateProvider };

@@ -52,10 +52,11 @@ export enum Status {
 export interface ApplicationState {
   status: Status;
   redditPost?: RedditPost;
-  error?: any;
+  error?: Error;
 }
 
 export interface StateContextProps {
   state: ApplicationState;
   fetchRedditPost: (url: string) => void;
+  deleteComment: (id: string) => void;
 }

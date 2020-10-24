@@ -1,7 +1,20 @@
 import { initialState } from "../store";
-import { ApiRedditPost, ApplicationState, Status } from "../types";
+import {
+  ApiRedditComment,
+  ApiRedditPost,
+  ApplicationState,
+  RedditComment,
+  RedditPost,
+  Status,
+} from "../types";
 import { ActionTypes, reducer } from "./reducer";
 
+const checkForDeletedComment = (comment: RedditComment) => {
+  expect(comment.author).toBe("[deleted]");
+  expect(comment.body_html).toBe("[deleted]");
+  expect(comment.body).toBe("[deleted]");
+  expect(comment.isDeleted).toBeTruthy();
+};
 describe("store/reducer", () => {
   it("Throw error for invalid action", () => {
     const type = "INVALID_ACTION" as any;
@@ -173,5 +186,134 @@ describe("store/reducer", () => {
     const comments = redditPost!.comments!;
 
     expect(comments[0].isDeleted).toBeTruthy();
+  });
+
+  it("Delete a post on first level", () => {
+    const root = {
+      created_utc: 1,
+      depth: 0,
+      id: "1",
+      comments: [],
+    };
+    const anotherRoot = {
+      created_utc: 1,
+      depth: 0,
+      id: "2",
+      comments: [],
+    };
+
+    const apiComments = [root, anotherRoot];
+
+    const stateRedditPost = ({ comments: apiComments } as any) as RedditPost;
+
+    const { redditPost } = reducer(
+      { ...initialState, redditPost: stateRedditPost },
+      {
+        type: ActionTypes.DeleteRedditComment,
+        id: "1",
+      }
+    );
+
+    const comments = redditPost!.comments!;
+
+    checkForDeletedComment(comments[0]);
+  });
+  it("Delete a post on second level", () => {
+    const root = {
+      created_utc: 1,
+      depth: 0,
+      id: "1",
+      comments: [
+        {
+          created_utc: 1,
+          depth: 1,
+          id: "2",
+          parent_id: "1",
+          comments: [],
+        },
+        {
+          created_utc: 1,
+          depth: 1,
+          id: "3",
+          parent_id: "1",
+          comments: [],
+        },
+      ],
+    };
+
+    const stateRedditPost = ({ comments: [root] } as any) as RedditPost;
+
+    const { redditPost } = reducer(
+      { ...initialState, redditPost: stateRedditPost },
+      {
+        type: ActionTypes.DeleteRedditComment,
+        id: "3",
+      }
+    );
+
+    const comments = redditPost!.comments!;
+
+    checkForDeletedComment(comments[0].comments[1]);
+  });
+
+  it("Delete a post on third level", () => {
+    const root = {
+      created_utc: 1,
+      depth: 0,
+      id: "1",
+      comments: [
+        {
+          created_utc: 1,
+          depth: 1,
+          id: "2",
+          parent_id: "1",
+          comments: [
+            {
+              created_utc: 1,
+              depth: 1,
+              id: "4",
+              parent_id: "2",
+              comments: [],
+            },
+          ],
+        },
+        {
+          created_utc: 1,
+          depth: 1,
+          id: "3",
+          parent_id: "1",
+          comments: [
+            {
+              created_utc: 1,
+              depth: 1,
+              id: "5",
+              parent_id: "3",
+              comments: [],
+            },
+            {
+              created_utc: 1,
+              depth: 1,
+              id: "6",
+              parent_id: "3",
+              comments: [],
+            },
+          ],
+        },
+      ],
+    };
+
+    const stateRedditPost = ({ comments: [root] } as any) as RedditPost;
+
+    const { redditPost } = reducer(
+      { ...initialState, redditPost: stateRedditPost },
+      {
+        type: ActionTypes.DeleteRedditComment,
+        id: "5",
+      }
+    );
+
+    const comments = redditPost!.comments!;
+
+    checkForDeletedComment(comments[0].comments[1].comments[0]);
   });
 });
