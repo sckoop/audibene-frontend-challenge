@@ -1,6 +1,7 @@
 import React from "react";
 
 import { RedditComment } from "../../store";
+import HTMLText from "../HTMLText/HTMLText";
 import { Styled } from "./Comment.styled";
 
 interface CommentProps extends Pick<RedditComment, "author" | "ups"> {
@@ -17,7 +18,7 @@ const Comment = ({ author, text, createdAt, ups }: CommentProps) => {
           {ups} - {createdAt}
         </Styled.Info>
       </Styled.Header>
-      <Styled.Text>{text}</Styled.Text>
+      <HTMLText text={text} />
     </Styled.Wrapper>
   );
 };

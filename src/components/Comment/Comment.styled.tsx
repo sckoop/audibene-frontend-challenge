@@ -6,14 +6,12 @@ const Wrapper = styled.div`
   })}
 `;
 const Header = styled.div``;
-const Text = styled.div``;
 const Author = styled.span``;
 const Info = styled.span``;
 
 export const Styled = {
   Wrapper,
   Header,
-  Text,
   Author,
   Info,
 };
