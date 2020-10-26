@@ -1,12 +1,12 @@
-import formatDistance from "date-fns/formatDistance";
-import React, { useContext } from "react";
+import formatDistance from 'date-fns/formatDistance';
+import React, { useContext } from 'react';
 
-import { RedditComment, store } from "../../store";
-import { formatUps } from "../../utils";
-import HTMLText from "../HTMLText/HTMLText";
-import IconsDelete from "../Icons/Delete";
-import { Styled } from "./Comment.styled";
-import CommentList from "./List";
+import { RedditComment, store } from '../../store';
+import { formatUps } from '../../utils';
+import HTMLText from '../HTMLText/HTMLText';
+import IconsDelete from '../Icons/Delete';
+import { Styled } from './Comment.styled';
+import CommentList from './List';
 
 interface CommentProps
   extends Pick<
@@ -26,13 +26,13 @@ const Comment = ({
   isDeleted,
   id,
 }: CommentProps) => {
+  const { deleteComment } = useContext(store);
+
   const formattedCreatedAt = formatDistance(
     new Date(createdAt * 1000),
     new Date(),
     { addSuffix: true }
   );
-
-  const { deleteComment } = useContext(store);
 
   const deleteIcon = isDeleted ? null : (
     <Styled.Icon onClick={() => deleteComment(id)}>

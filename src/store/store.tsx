@@ -1,7 +1,7 @@
-import React, { createContext, useCallback, useReducer } from "react";
+import React, { createContext, useCallback, useReducer } from 'react';
 
-import { ActionTypes, reducer } from "./reducer/reducer";
-import { ApplicationState, StateContextProps, Status } from "./types";
+import { ActionTypes, reducer } from './reducer/reducer';
+import { ApplicationState, StateContextProps, Status } from './types';
 
 export const initialState: ApplicationState = {
   status: Status.Initial,
@@ -37,9 +37,12 @@ const StateProvider = ({ children }: any) => {
     [dispatch]
   );
 
-  const deleteComment = (id: string) => {
-    dispatch({ type: ActionTypes.DeleteRedditComment, id });
-  };
+  const deleteComment = useCallback(
+    (id: string) => {
+      dispatch({ type: ActionTypes.DeleteRedditComment, id });
+    },
+    [dispatch]
+  );
 
   return (
     <Provider value={{ state, fetchRedditPost, deleteComment }}>

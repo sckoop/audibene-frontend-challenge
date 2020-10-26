@@ -1,4 +1,9 @@
 # Audibene Frontend Challenge
+
+Welcome my friend. It's been a while since we spoke. I took care of our idea to redesign the reddit post.
+Several 🍍🍕 we're eaten while implementing the improved design. It's been done now, and I hope you enjoy reading code.
+I'm excited about your feedback and discuss this solution.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -12,6 +17,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+### `npm start:prod`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:4000](http://localhost:4000) to view it in the browser.
+
+To rebuild a new version you have to stop the execution and restart the command
 
 ### `npm test`
 

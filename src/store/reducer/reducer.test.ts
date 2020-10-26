@@ -1,13 +1,6 @@
-import { initialState } from "../store";
-import {
-  ApiRedditComment,
-  ApiRedditPost,
-  ApplicationState,
-  RedditComment,
-  RedditPost,
-  Status,
-} from "../types";
-import { ActionTypes, reducer } from "./reducer";
+import { initialState } from '../store';
+import { ApiRedditPost, ApplicationState, RedditComment, RedditPost, Status } from '../types';
+import { ActionTypes, reducer } from './reducer';
 
 const checkForDeletedComment = (comment: RedditComment) => {
   expect(comment.author).toBe("[deleted]");

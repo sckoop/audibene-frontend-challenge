@@ -34,7 +34,8 @@
     "start:prod": "npx serve -s build -l 4000",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext js,ts,tsx src"
   },
   "eslintConfig": {
     "extends": [
