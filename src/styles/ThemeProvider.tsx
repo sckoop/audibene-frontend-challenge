@@ -15,6 +15,10 @@ const theme: Theme = {
       header: "rgba(0, 0, 0, 0.87)",
       username: "#36A3F0",
     },
+    skeleton: {
+      background: "#d8d8d8", // 10% darker then original react-skeleton-library
+      loadingIndicator: "#c4c4c4", // 20% darker then original react-skeleton-library
+    },
     subtitle: "rgba(88,88,88,0.87)",
     text: "rgba(0,0,0,0.6)",
     title: "#2C2C2C",

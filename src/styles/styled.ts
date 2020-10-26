@@ -12,6 +12,10 @@ export type Theme = {
       header: string;
       username: string;
     };
+    skeleton: {
+      background: string;
+      loadingIndicator: string;
+    };
     subtitle: string;
     text: string;
     title: string;

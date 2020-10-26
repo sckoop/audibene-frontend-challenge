@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from "react";
 
-import { Styled } from './App.styles';
-import CommentList from './components/Comment/List';
-import Post from './components/Post/Post';
-import Title from './components/Title/Title';
-import { Status, store } from './store';
+import { Styled } from "./App.styles";
+import CommentList from "./components/Comment/List";
+import Post from "./components/Post/Post";
+import Title from "./components/Title/Title";
+import { Status, store } from "./store";
 
 const App = () => {
   const { state, fetchRedditPost } = useContext(store);
@@ -21,12 +21,8 @@ const App = () => {
     return <div>BROKEN</div>;
   }
 
-  if (status !== Status.Success) {
-    // TODO better loading page
-    return <div>Loading...</div>;
-  }
-
-  const redditPost = state.redditPost!;
+  const redditPost = state.redditPost || ({} as any);
+  const isLoading = status !== Status.Success;
 
   return (
     <Styled.Page>
@@ -34,13 +30,15 @@ const App = () => {
         text={redditPost.title}
         subreddit={redditPost.subreddit_name_prefixed}
         ups={redditPost.ups}
+        isLoading={isLoading}
       />
       <Styled.Container>
         <Post
           text={redditPost.selftext_html}
           totalComments={redditPost.totalComments}
+          isLoading={isLoading}
         />
-        <CommentList comments={redditPost.comments} />
+        <CommentList comments={redditPost.comments} isLoading={isLoading} />
       </Styled.Container>
     </Styled.Page>
   );

@@ -27,9 +27,15 @@ const Comments = styled.div`
   margin-top: ${({ theme }) => theme.spacing(2)};
 `;
 
+const CommentsSkeleton = styled.div`
+  margin-left: ${({ theme }) => theme.spacing(1)};
+  width: 100px;
+`;
+
 export const Styled = {
   Amount,
   Box,
   Comments,
+  CommentsSkeleton,
   Text,
 };

@@ -20,10 +20,28 @@ const Subreddit = styled.h3`
   })}
 `;
 
+const SubredditSkeleton = styled.div`
+  width: 240px;
+  ${({ theme }) => ({
+    ".react-loading-skeleton": {
+      lineHeight: theme.fontSize.small,
+    },
+    marginBottom: theme.spacing(2),
+  })};
+`;
+
 const Title = styled.h1`
   align-items: center;
   display: flex;
   margin: 0;
+`;
+
+const TitleSkeleton = styled.div`
+  ${({ theme }) => ({
+    ".react-loading-skeleton": {
+      lineHeight: theme.fontSize.extraLarge,
+    },
+  })};
 `;
 
 const Ups = styled.span`
@@ -42,8 +60,10 @@ const Text = styled.span`
 
 export const Styled = {
   Subreddit,
+  SubredditSkeleton,
   Text,
   Title,
+  TitleSkeleton,
   Wrapper,
   Ups,
 };

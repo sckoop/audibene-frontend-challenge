@@ -1,16 +1,27 @@
 import React from "react";
 
 import { RedditComment } from "../../store";
+import Skeleton from "../Skeleton/Skeleton";
 import Comment from "./Comment";
 import { Styled } from "./List.styled";
 
 interface CommentListProps {
-  comments: RedditComment[];
+  comments?: RedditComment[];
   hasBorder?: boolean;
+
+  isLoading?: boolean;
 }
 
-const CommentList = ({ comments, hasBorder }: CommentListProps) => {
-  if (comments.length === 0) {
+const CommentList = ({ comments, hasBorder, isLoading }: CommentListProps) => {
+  if (isLoading) {
+    return (
+      <Styled.Wrapper>
+        <Skeleton count={5} />
+      </Styled.Wrapper>
+    );
+  }
+
+  if (!comments || comments.length === 0) {
     return null;
   }
 
