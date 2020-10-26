@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
+import { Helmet } from 'react-helmet';
 
-import CommentList from "../components/Comment/List";
-import Post from "../components/Post/Post";
-import Title from "../components/Title/Title";
-import { RedditPost } from "../store";
-import styled from "../styles/styled";
+import CommentList from '../components/Comment/List';
+import Post from '../components/Post/Post';
+import Title from '../components/Title/Title';
+import { RedditPost } from '../store';
+import styled from '../styles/styled';
 
 interface ScreensHomeProps {
   redditPost?: RedditPost;
@@ -27,6 +28,9 @@ export const ScreensHome = ({
 }: ScreensHomeProps) => {
   return (
     <>
+      <Helmet>
+        <title>{redditPost.title || "Loading Post"}</title>
+      </Helmet>
       <Title
         text={redditPost.title}
         subreddit={redditPost.subreddit_name_prefixed}

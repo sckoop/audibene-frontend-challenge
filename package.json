@@ -9,11 +9,13 @@
     "@types/numeral": "0.0.28",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "@types/react-helmet": "^6.1.0",
     "date-fns": "^2.16.1",
     "emotion-theming": "^10.0.27",
     "numeral": "^2.0.6",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-helmet": "^6.1.0",
     "react-loading-skeleton": "^2.1.1",
     "react-scripts": "3.4.3",
     "typescript": "^3.7.5"
@@ -28,6 +30,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prestart:prod": "npm run build",
+    "start:prod": "npx serve -s build -l 4000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

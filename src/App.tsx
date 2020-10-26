@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from 'react';
 
-import { Styled } from "./App.styles";
-import { ScreensError } from "./screens/Error";
-import { ScreensHome } from "./screens/Home";
-import { Status, store } from "./store";
+import { Styled } from './App.styles';
+import { ScreensError } from './screens/Error';
+import { ScreensHome } from './screens/Home';
+import { Status, store } from './store';
 
 const App = () => {
   const { state, fetchRedditPost } = useContext(store);
