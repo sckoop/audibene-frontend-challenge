@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { StateProvider } from './store/store';
-import ThemeProvider from './styles/ThemeProvider';
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { StateProvider } from "./store/store";
+import ThemeProvider from "./styles/ThemeProvider";
 
 ReactDOM.render(
   <React.StrictMode>

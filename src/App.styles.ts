@@ -1,6 +1,6 @@
 import styled from "./styles/styled";
 
-const Page = styled.div`
+const Screen = styled.div`
   ${({ theme }) => ({
     background: theme.colors.background,
     borderRadius: theme.spacing(0.5),
@@ -28,5 +28,5 @@ const Container = styled.div`
 
 export const Styled = {
   Container,
-  Page,
+  Screen,
 };
